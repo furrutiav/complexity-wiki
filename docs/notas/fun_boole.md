@@ -269,3 +269,12 @@ $$
     $$
     \sum_i DEC(A_i) \leq m \cdot \frac{n}{k} + \frac{n}{k} \cdot k\, 2^{k-1}. \qquad \blacksquare
     $$
+
+## Bibliografía
+
+- **Autor:** Stasys Jukna
+  **Título:** *Boolean Function Complexity: Advances and Frontiers*
+  **Serie:** Algorithms and Combinatorics, vol. 27
+  **Editorial:** Springer, 2012
+  **ISBN:** 978-3-642-24508-4
+  **PDF:** [978-3-642-24508-4.pdf](../libros/978-3-642-24508-4.pdf)
