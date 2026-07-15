@@ -1,0 +1,72 @@
+site_name: Complexity Wiki
+site_description: A wiki on computational complexity theory
+site_author: Felipe Urrutia
+
+repo_url: https://github.com/furrutiav/complexity-wiki
+repo_name: furrutiav/complexity-wiki
+edit_uri: edit/main/docs/
+
+extra_css:
+  - stylesheets/custom_admonitions.css
+  - stylesheets/extra.css
+
+plugins:
+  - search
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+
+nav:
+  - Home: index.md
+  - Notas:
+    - Funciones Booleanas: notas/fun_boole.md
+  - Calendario: standalone/calendario.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - footnotes
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
