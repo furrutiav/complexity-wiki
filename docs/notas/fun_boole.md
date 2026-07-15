@@ -7,7 +7,9 @@ $$
 donde $n$ es la cantidad de bits (*bit sequence*) y usamos la convención $\text{FALSE}=0$, $\text{TRUE}=1$.
 
 !!! example "Ejemplos"
-    $x \cdot y$, $x \vee y$, $\lnot x = 1-x$.
+    * $x \cdot y$, 
+    * $x \vee y$, 
+    * $\lnot x = 1-x$.
 
 !!! motivation "Motivación"
     *"Lower bounds"*: ¿cuántas de estas operaciones "simples" necesitamos para computar $f$ para todo input?
@@ -265,7 +267,7 @@ $$
     $$
 
 !!! observation "Observación"
-    $DEC(A) \leq m + m \cdot n$, ya que $w(B_j) \leq 1+n \implies \sum w(B_j) \leq m + m \cdot n$.
+    $DEC(A) \leq m + m \cdot n$, ya que para primitivas por fila $w(B_j) \leq 1+n \implies \sum w(B_j) \leq m + m \cdot n$.
 
 ## Teorema de Lupanov
 
