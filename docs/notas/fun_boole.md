@@ -6,15 +6,14 @@ $$
 
 donde $n$ es la cantidad de bits (*bit sequence*) y usamos la convención $\text{FALSE}=0$, $\text{TRUE}=1$.
 
-**Ejemplos:** $x \cdot y$, $x \vee y$, $\lnot x = 1-x$.
+!!! example "Ejemplos"
+    $x \cdot y$, $x \vee y$, $\lnot x = 1-x$.
 
-## Motivación
+!!! motivation "Motivación"
+    *"Lower bounds"*: ¿cuántas de estas operaciones "simples" necesitamos para computar $f$ para todo input?
 
-*"Lower bounds"*: ¿cuántas de estas operaciones "simples" necesitamos para computar $f$ para todo input?
-
-## Historia
-
-George Boole (1815–1864), matemático y filósofo, introdujo el concepto de función booleana.
+!!! author "George Boole"
+    George Boole (1815–1864), matemático y filósofo, introdujo el concepto de función booleana.
 
 ## Conceptos básicos
 
@@ -52,7 +51,10 @@ George Boole (1815–1864), matemático y filósofo, introdujo el concepto de fu
     $f(x_1, x_2) = \lnot x_1$ depende de $x_1$, pero no de $x_2$.
 
 !!! example "Otro ejemplo"
-    $\text{FIRST}(x_1, \dots, x_n) = x_1$ solo depende de $x_1$ (Math).
+    $\text{FIRST}(x_1, \dots, x_n) = x_1$ solo depende de $x_1$ ([Hahn](https://aclanthology.org/2024.acl-long.800/)).
+
+    !!! author "Hahn & Rofin"
+        Hahn menciona esta función en su paper [*"Why are Sensitive Functions Hard for Transformers?"*](https://aclanthology.org/2024.acl-long.800/) (Hahn & Rofin, ACL 2024).
 
 ## Conteo de funciones booleanas
 
@@ -66,8 +68,8 @@ George Boole (1815–1864), matemático y filósofo, introdujo el concepto de fu
     - **Paridad:** $\oplus_n(x) = x_1 + x_2 + \dots + x_n \mod 2$.
     - **Función módulo:** $Mod_k^n(x) = \big[x_1 + x_2 + \dots + x_n \equiv_k 0\big]$.
 
-!!! observation "Observación"
-    Estos ejemplos no dependen de la posición.
+    !!! observation "Observación"
+        Estos ejemplos no dependen de la posición.
 
 ## Funciones simétricas
 
@@ -84,9 +86,10 @@ $$
 
 y una función simétrica queda determinada por su valor en cada uno de ellos. Es decir, $f(0\dots010\dots0) = f(10\dots0)$.
 
-## Motivación 2: ¿por qué pensar en funciones booleanas?
+## ¿Por qué pensar en funciones booleanas?
 
-Propiedades se pueden codificar con funciones booleanas.
+!!! motivation "Motivación 2"
+    Propiedades se pueden codificar con funciones booleanas.
 
 !!! example "Ejemplo — Paridad de un número"
     $\text{PAR}(x)$, con $x$ en representación binaria, determina si el número es par.
@@ -96,6 +99,9 @@ Propiedades se pueden codificar con funciones booleanas.
     $$
     \text{PAR}(x) = \lnot x_1 = \lnot \, \text{FIRST}(x).
     $$
+
+!!! def "$\text{poly}(n)$"
+    Una cantidad $\text{poly}(n)$ de operaciones es una cantidad acotada por un polinomio en $n$, es decir $O(n^c)$ para alguna constante $c > 0$. Se usa para distinguir algoritmos "eficientes" (tiempo polinomial) de aquellos que crecen exponencialmente en $n$.
 
 !!! example "Ejemplo — Primalidad"
     $\text{PRIME}(x)$, con $x$ en representación binaria (teoría de números):
@@ -110,7 +116,10 @@ Propiedades se pueden codificar con funciones booleanas.
 
     **Q:** ¿Se podrá computar usando una cantidad $\text{poly}(n)$ de operaciones booleanas?
 
-    **R:** Sí — Agrawal (2004).
+    **R:** Sí — [Agrawal, Kayal & Saxena (2004)](https://annals.math.princeton.edu/2004/160-2/p12).
+
+    !!! author "Agrawal, Kayal & Saxena"
+        Manindra Agrawal, Neeraj Kayal y Nitin Saxena dieron el primer algoritmo determinístico en tiempo polinomial para primalidad (*AKS primality test*) en [*"PRIMES is in P"*](https://annals.math.princeton.edu/2004/160-2/p12).
 
 !!! example "Ejemplo — Grafos"
     Sea $[n] = \{1, \dots, n\}$ el conjunto de vértices, y $x_{ij} \in \{0,1\}$ indicando la potencial arista $(i,j)$.
@@ -128,14 +137,18 @@ Propiedades se pueden codificar con funciones booleanas.
     !!! observation "Observación"
         Si **no**, entonces $P \neq NP$.
 
-### Motivación 3: comparar dificultad de problemas
+!!! author "Cook & Karp"
+    [Cook (1971)](https://www.cs.toronto.edu/~sacook/homepage/1971.pdf) definió la clase $NP$ y mostró que $SAT$ es $NP$-completo. [Karp (1972)](https://www.cs.umd.edu/~gasarch/BLOGPAPERS/Karp.pdf) extendió esto reduciendo $SAT$ a otros 21 problemas combinatorios, incluyendo $\text{CLIQUE}$, estableciendo que $\text{CLIQUE}$ es $NP$-completo: computarlo en $\text{poly}(n)$ ssi $P = NP$.
 
-¿Un problema es más fácil que otro?
+### Comparar dificultad de problemas
 
-1. $G_x$ ¿contiene $\binom{k}{2}$ aristas? — $Th^{\binom{n}{2}}_{\binom{k}{2}}$.
-2. $G_x$ ¿posee clique de tal tamaño? — $\text{CLIQUE}(n,k)$.
+!!! motivation "Motivación 3"
+    ¿Un problema es más fácil que otro?
 
-Debería ser que (1) $\leq$ (2), (1) más fácil.
+    1. $G_x$ ¿contiene $\binom{k}{2}$ aristas? — $Th^{\binom{n}{2}}_{\binom{k}{2}}$.
+    2. $G_x$ ¿posee clique de tal tamaño? — $\text{CLIQUE}(n,k)$.
+
+    Debería ser que (1) $\leq$ (2), (1) más fácil.
 
 ## Matrices booleanas
 
@@ -195,11 +208,12 @@ $$
 
 ## Descomposición de matrices
 
-**Motivación:** sea $A \in \{0,1\}^{m \times n}$. Representa la siguiente pregunta:
+!!! motivation "Motivación"
+    Sea $A \in \{0,1\}^{m \times n}$. Representa la siguiente pregunta:
 
-$$
-y_i = \bigvee_{j \,:\, A_{ij}=1} x_j.
-$$
+    $$
+    y_i = \bigvee_{j \,:\, A_{ij}=1} x_j.
+    $$
 
 !!! example "Ejemplo"
     $$
@@ -255,10 +269,13 @@ $$
 
 ## Teorema de Lupanov
 
-!!! prop "Lema 1.2 (Lupanov, 1956)"
+!!! prop "Lema 1.2 ([Lupanov, 1956](https://web.vu.lt/mif/s.jukna/boolean/lupanov56.pdf))"
     $$
     DEC(A) \leq (1+o(1)) \, \frac{m \cdot n}{\log(m \cdot n)}.
     $$
+
+!!! author "O. B. Lupanov"
+    Oleg Borisovich Lupanov introdujo este lema de descomposición en [*"On rectifier and switching-and-rectifier circuits"*](https://web.vu.lt/mif/s.jukna/boolean/lupanov56.pdf), Doklady Akademii Nauk SSSR, vol. 111, n.º 6 (1956), pp. 1171–1174 (en ruso; traducción al inglés de Igor Sergeev).
 
 !!! proof "Demostración"
     **Por demostrar:** $DEC(A) \leq \dfrac{m \cdot n}{k} + n \, 2^{k-1}$ para todo $k=1,\dots,n$ (tomando $k = \log m - 2\log\log m$).
@@ -281,9 +298,40 @@ $$
 
 ## Bibliografía
 
-- **Autor:** Stasys Jukna
-  **Título:** *Boolean Function Complexity: Advances and Frontiers*
-  **Serie:** Algorithms and Combinatorics, vol. 27
-  **Editorial:** Springer, 2012
-  **ISBN:** 978-3-642-24508-4
-  **PDF:** [978-3-642-24508-4.pdf](../libros/978-3-642-24508-4.pdf)
+!!! ref "Jukna (2012)"
+    **Autor:** Stasys Jukna
+    **Título:** *Boolean Function Complexity: Advances and Frontiers*
+    **Serie:** Algorithms and Combinatorics, vol. 27
+    **Editorial:** Springer, 2012
+    **ISBN:** 978-3-642-24508-4
+    **PDF:** [978-3-642-24508-4.pdf](../fuentes/978-3-642-24508-4.pdf)
+
+!!! ref "Hahn & Rofin (2024)"
+    **Autores:** Michael Hahn, Mark Rofin
+    **Título:** [*Why are Sensitive Functions Hard for Transformers?*](https://aclanthology.org/2024.acl-long.800/)
+    **Venue:** ACL 2024 (62nd Annual Meeting of the Association for Computational Linguistics)
+    **PDF:** [2024.acl-long.800.pdf](../fuentes/2024.acl-long.800.pdf)
+
+!!! ref "Agrawal, Kayal & Saxena (2004)"
+    **Autores:** Manindra Agrawal, Neeraj Kayal, Nitin Saxena
+    **Título:** [*PRIMES is in P*](https://annals.math.princeton.edu/2004/160-2/p12)
+    **Venue:** Annals of Mathematics, 160 (2004), 781–793
+    **PDF:** [annals-v160-n2-p12.pdf](../fuentes/annals-v160-n2-p12.pdf)
+
+!!! ref "Lupanov (1956)"
+    **Autor:** O. B. Lupanov
+    **Título:** [*On rectifier and switching-and-rectifier circuits*](https://web.vu.lt/mif/s.jukna/boolean/lupanov56.pdf)
+    **Venue:** Doklady Akademii Nauk SSSR, vol. 111, n.º 6 (1956), pp. 1171–1174 (en ruso; traducción al inglés de Igor Sergeev, cortesía de S. Jukna)
+    **PDF:** [lupanov56.pdf](../fuentes/lupanov56.pdf)
+
+!!! ref "Cook (1971)"
+    **Autor:** Stephen A. Cook
+    **Título:** [*The Complexity of Theorem Proving Procedures*](https://www.cs.toronto.edu/~sacook/homepage/1971.pdf)
+    **Venue:** Proceedings of the 3rd Annual ACM Symposium on Theory of Computing (STOC), 1971, pp. 151–158
+    **PDF:** [cook71.pdf](../fuentes/cook71.pdf)
+
+!!! ref "Karp (1972)"
+    **Autor:** Richard M. Karp
+    **Título:** [*Reducibility Among Combinatorial Problems*](https://www.cs.umd.edu/~gasarch/BLOGPAPERS/Karp.pdf)
+    **Venue:** en *Complexity of Computer Computations*, R.E. Miller y J.W. Thatcher (eds.), Plenum Press, 1972, pp. 85–103
+    **PDF:** [Karp.pdf](../fuentes/Karp.pdf)

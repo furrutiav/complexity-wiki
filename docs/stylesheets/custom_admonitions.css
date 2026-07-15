@@ -158,8 +158,79 @@
 }
 
 .md-typeset .example > .admonition-title::before,
-.md-typeset .example > summary::before {  
+.md-typeset .example > summary::before {
     background-color: orange;
-    -webkit-mask-image: var(--md-admonition-icon--example); 
-            mask-image: var(--md-admonition-icon--example); 
+    -webkit-mask-image: var(--md-admonition-icon--example);
+            mask-image: var(--md-admonition-icon--example);
+}
+
+/* ============================
+   Motivación (reuses the "tip" lightbulb icon)
+   ============================ */
+
+.md-typeset .admonition.motivation,
+.md-typeset details.motivation {
+    border-color: rgba(231, 76, 60, 0.15);
+}
+
+.md-typeset .motivation > .admonition-title,
+.md-typeset .motivation > summary {
+    background-color: rgba(231, 76, 60, 0.18);
+}
+
+.md-typeset .motivation > .admonition-title::before,
+.md-typeset .motivation > summary::before {
+    background-color: #e74c3c;
+    -webkit-mask-image: var(--md-admonition-icon--tip);
+            mask-image: var(--md-admonition-icon--tip);
+}
+
+/* ============================
+   Autores
+   ============================ */
+
+:root {
+    --md-admonition-icon--author: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/></svg>');
+}
+
+.md-typeset .admonition.author,
+.md-typeset details.author {
+    border-color: rgba(233, 30, 99, 0.15);
+}
+
+.md-typeset .author > .admonition-title,
+.md-typeset .author > summary {
+    background-color: rgba(233, 30, 99, 0.16);
+}
+
+.md-typeset .author > .admonition-title::before,
+.md-typeset .author > summary::before {
+    background-color: #e91e63;
+    -webkit-mask-image: var(--md-admonition-icon--author);
+            mask-image: var(--md-admonition-icon--author);
+}
+
+/* ============================
+   Referencias
+   ============================ */
+
+:root {
+    --md-admonition-icon--ref: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5A2,2 0 0,0 17,3Z"/></svg>');
+}
+
+.md-typeset .admonition.ref,
+.md-typeset details.ref {
+    border-color: rgba(96, 125, 139, 0.18);
+}
+
+.md-typeset .ref > .admonition-title,
+.md-typeset .ref > summary {
+    background-color: rgba(96, 125, 139, 0.16);
+}
+
+.md-typeset .ref > .admonition-title::before,
+.md-typeset .ref > summary::before {
+    background-color: #607d8b;
+    -webkit-mask-image: var(--md-admonition-icon--ref);
+            mask-image: var(--md-admonition-icon--ref);
 }

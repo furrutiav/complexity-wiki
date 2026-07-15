@@ -6,17 +6,33 @@ Bienvenido/a a **Complexity Wiki**, un espacio de referencia sobre teoría de la
 
 - **Notas**: definiciones, proposiciones y demostraciones organizadas por tema.
 
-!!! def "Ejemplo de definición"
-    Este es un bloque de tipo *definición*, uno de los admonitions personalizados disponibles en este sitio.
+## Tipos de bloques
 
-!!! prop "Ejemplo de proposición"
-    Este es un bloque de tipo *proposición*.
+Las notas usan los siguientes bloques (admonitions) personalizados:
 
-!!! proof "Ejemplo de demostración"
-    Este es un bloque de tipo *demostración*.
+!!! motivation "Motivación"
+    Explica *por qué* nos interesa un concepto antes de definirlo formalmente.
+
+!!! author "Autores"
+    Notas biográficas o históricas sobre quién introdujo una idea, con enlace a la fuente original.
+
+!!! def "Definición"
+    Introduce un concepto de forma precisa, p. ej. $f : \{0,1\}^n \to \{0,1\}$.
+
+!!! prop "Proposición"
+    Un resultado o teorema, p. ej. $\lnot(x \vee y) = \lnot x \wedge \lnot y$.
+
+!!! proof "Demostración"
+    El argumento que prueba una proposición o teorema.
 
 !!! example "Ejemplo"
-    Este es un bloque de tipo *ejemplo*.
+    Una instancia concreta que ilustra una definición o resultado.
+
+!!! ex "Ejercicio"
+    Un problema propuesto para el lector.
 
 !!! observation "Observación"
-    Este es un bloque de tipo *observación*.
+    Un comentario o consecuencia breve, no siempre evidente de lo anterior.
+
+!!! ref "Referencia"
+    Una entrada bibliográfica, con enlace a la fuente y, cuando está disponible, al PDF en `docs/fuentes/`.
