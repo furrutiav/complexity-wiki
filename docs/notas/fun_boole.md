@@ -186,7 +186,7 @@ $$
 
 ## Descomposición de matrices
 
-**Motivación:** sea $A \in \{0,1\}^{n \times n}$. Representa la siguiente pregunta:
+**Motivación:** sea $A \in \{0,1\}^{m \times n}$. Representa la siguiente pregunta:
 
 $$
 y_i = \bigvee_{j \,:\, A_{ij}=1} x_j.
@@ -208,7 +208,7 @@ $$
     ¿Qué nos cuesta computar? Guardamos $|C|$ columnas. En el ejemplo $|C|=3$ columnas distintas; digamos $z = x_1 \vee x_3 \vee x_4$, la función que guarda para $y_1$ e $y_3$. Nos cuesta además almacenar $|R|$ asignaciones. En total necesitamos $|C| + |R|$ de almacenamiento.
 
 !!! def "Matriz primitiva"
-    Una matriz $B \in \{0,1\}^{n \times n}$ se dice primitiva si $\text{rank}(B) = 1$: tiene una columna no trivial que se repite $\leq n$ veces (en filas distintas).
+    Una matriz $B \in \{0,1\}^{m \times n}$ se dice primitiva si $\text{rank}(B) = 1$: tiene una columna no trivial que se repite $\leq n$ veces (en filas distintas).
 
 !!! def "Peso"
     $$
@@ -242,24 +242,24 @@ $$
     $$
 
 !!! observation "Observación"
-    $DEC(A) \leq n \cdot n$, ya que $w(B_j) \leq 1+n \implies \sum w(B_j) \leq n \cdot n + n \leq (1+o(1)) \, n \cdot n$.
+    $DEC(A) \leq m + m \cdot n$, ya que $w(B_j) \leq 1+n \implies \sum w(B_j) \leq m + m \cdot n$.
 
 ## Teorema de Lupanov
 
 !!! prop "Lema 1.2 (Lupanov, 1956)"
     $$
-    DEC(A) \leq (1+o(1)) \, \frac{n \cdot n}{\log(n \cdot n)}.
+    DEC(A) \leq (1+o(1)) \, \frac{m \cdot n}{\log(m \cdot n)}.
     $$
 
 !!! proof "Demostración"
-    **Por demostrar:** $DEC(A) \leq \dfrac{n \cdot n}{k} + n \, 2^{k-1}$ para todo $k=1,\dots,n$ (tomando $k = \log n - 2\log\log n$).
+    **Por demostrar:** $DEC(A) \leq \dfrac{m \cdot n}{k} + n \, 2^{k-1}$ para todo $k=1,\dots,n$ (tomando $k = \log m - 2\log\log m$).
 
     **Caso $k=n$.**
 
     *Paso 1:* Agrupar las filas de $A$ tales que las filas de cada grupo tengan los mismos valores. ¿Cuántas primitivas? $t \leq 2^n$ filas distintas. Cada fila no nula de $A$ cae en alguna primitiva $B_i = r_i \times c_i$, con $w(B_i) = r_i + c_i$ (filas y columnas distintas).
 
     $$
-    \sum_{i=1}^{t} w(B_i) = \sum_{i=1}^{t} r_i + \sum_{i=1}^{t} c_i \leq n + \sum_{j=0}^{n} \mathbb{1}(c_i = j)\, j \leq \sum_{j=0}^{n} \binom{n}{j} j = n + n\, 2^{n-2}.
+    \sum_{i=1}^{t} w(B_i) = \sum_{i=1}^{t} r_i + \sum_{i=1}^{t} c_i \leq m + \sum_{j=0}^{n} \mathbb{1}(c_i = j)\, j \leq \sum_{j=0}^{n} \binom{n}{j} j = m + n\, 2^{n-2}.
     $$
 
     (¿Cuántas formas hay de elegir $j$? $\#(S,a)$ tal que $S \subseteq \{1,\dots,n\}$, $a \in S$, $|S|=j$: elegir $a \in \{1,\dots,n\}$ ($n$ formas), elegir el resto $\binom{n}{j}$, total $\leq n\, 2^{n-1}$.)
@@ -267,5 +267,5 @@ $$
     *Paso 2:* Para $k=1,\dots,n-1$: dividir $A$ en $n/k$ submatrices con $k$ columnas (queda una con residuo). Son $n/k$ matrices tales que $n + k\, 2^{k-1} \geq DEC(A_i)$, luego
 
     $$
-    \sum_i DEC(A_i) \leq n \cdot \frac{n}{k} + \frac{n}{k} \cdot k\, 2^{k-1}. \qquad \blacksquare
+    \sum_i DEC(A_i) \leq m \cdot \frac{n}{k} + \frac{n}{k} \cdot k\, 2^{k-1}. \qquad \blacksquare
     $$
