@@ -88,6 +88,15 @@ y una función simétrica queda determinada por su valor en cada uno de ellos. E
 
 Propiedades se pueden codificar con funciones booleanas.
 
+!!! example "Ejemplo — Paridad de un número"
+    $\text{PAR}(x)$, con $x$ en representación binaria, determina si el número es par.
+
+    Es fácil: $x_1$ es el bit menos significativo ($2^0$), así que el número es par ssi $x_1 = 0$. Luego
+
+    $$
+    \text{PAR}(x) = \lnot x_1 = \lnot \, \text{FIRST}(x).
+    $$
+
 !!! example "Ejemplo — Primalidad"
     $\text{PRIME}(x)$, con $x$ en representación binaria (teoría de números):
 
