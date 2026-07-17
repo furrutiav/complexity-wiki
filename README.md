@@ -2,6 +2,8 @@
 
 A [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) site on computational complexity theory.
 
+🔗 [furrutiav.github.io/complexity-wiki](https://furrutiav.github.io/complexity-wiki/)
+
 ## Local development
 
 ```bash
