@@ -1,0 +1,978 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A wiki on computational complexity theory">
+      
+      
+        <meta name="author" content="Felipe Urrutia">
+      
+      
+      
+        <link rel="prev" href="../fun_boole/">
+      
+      
+        <link rel="next" href="../../standalone/calendario/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Circuitos Booleanos - Complexity Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom_admonitions.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#circuitos-booleanos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Complexity Wiki" class="md-header__button md-logo" aria-label="Complexity Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Complexity Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Circuitos Booleanos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/furrutiav/complexity-wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    furrutiav/complexity-wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../fun_boole/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Notas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../standalone/calendario/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Calendario
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Complexity Wiki" class="md-nav__button md-logo" aria-label="Complexity Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Complexity Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/furrutiav/complexity-wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    furrutiav/complexity-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fun_boole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones Booleanas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuitos Booleanos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuitos Booleanos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#circuitos-como-dags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuitos como DAGs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuitos-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuitos De Morgan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuitos-probabilisticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuitos probabilísticos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teorema-de-adleman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teorema de Adleman
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tiempo-promedio-de-computacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiempo promedio de computación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-la-funcion-umbral-th_2n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo: la función umbral \(Th_2^n\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standalone/calendario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calendario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/furrutiav/complexity-wiki/edit/main/docs/notas/circ_bool.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/furrutiav/complexity-wiki/raw/main/docs/notas/circ_bool.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="circuitos-booleanos">Circuitos Booleanos<a class="headerlink" href="#circuitos-booleanos" title="Permanent link">&para;</a></h1>
+<div class="admonition def">
+<p class="admonition-title">Circuitos booleanos</p>
+<p>Los circuitos booleanos son modelos computacionales que computan funciones booleanas.</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 1 — Circuito</p>
+<p>Sea <span class="arithmatex">\(\Phi\)</span> un conjunto de funciones booleanas. Un <strong>circuito de <span class="arithmatex">\(n\)</span> variables sobre la base <span class="arithmatex">\(\Phi\)</span></strong> es una secuencia <span class="arithmatex">\(g_1, \dots, g_t\)</span> de <span class="arithmatex">\(t \geq n\)</span> funciones booleanas tales que <span class="arithmatex">\(g_1 = x_1, \dots, g_n = x_n\)</span> y</p>
+<div class="arithmatex">\[
+\forall i &gt; n, \quad g_i = \varphi(g_{i_1}, \dots, g_{i_d})
+\]</div>
+<p>donde <span class="arithmatex">\(\varphi \in \Phi\)</span> e <span class="arithmatex">\(i_1, \dots, i_d &lt; i\)</span>.</p>
+<p>Un circuito en general se representa de forma <em>"bottom-up"</em>.</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 2 — Tamaño (size)</p>
+<p>El <strong>tamaño</strong> de un circuito es el número total <span class="arithmatex">\(t-n\)</span> de <em>gates</em> (no se cuentan las variables input).</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 3 — Profundidad (depth)</p>
+<p>La <strong>profundidad</strong> de un circuito es el largo del camino más extenso entre una variable input y el nodo output.</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 4 — Computar</p>
+<p>Decimos que un circuito <strong>computa</strong> una función booleana (o un conjunto de ellas) si esta está entre las <span class="arithmatex">\(g_i\)</span>.</p>
+</div>
+<h2 id="circuitos-como-dags">Circuitos como DAGs<a class="headerlink" href="#circuitos-como-dags" title="Permanent link">&para;</a></h2>
+<div class="admonition observation">
+<p class="admonition-title">Observación</p>
+<p>Todo circuito puede ser visto como un DAG con nodos de fan-in <span class="arithmatex">\(0\)</span> (grado <span class="arithmatex">\(0\)</span>) que corresponden a las variables, y donde cada otro nodo <span class="arithmatex">\(v\)</span> corresponde a una función <span class="arithmatex">\(\varphi \in \Phi\)</span>. Uno o más nodos son outputs.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo 1 — Circuito para <span class="arithmatex">\(Maj_3\)</span></p>
+<p>Un circuito sobre <span class="arithmatex">\(B = \{\wedge, \vee, \lnot\}\)</span> que computa</p>
+<div class="arithmatex">\[
+Maj_3(x,y,z) = 1 \iff x+y+z \geq 2.
+\]</div>
+<pre class="mermaid"><code>graph TD
+    x --&gt; AND1["∧"]
+    y --&gt; AND1
+    x --&gt; OR1["∨"]
+    y --&gt; OR1
+    AND1 --&gt; NOT1["¬"]
+    NOT1 --&gt; AND2["∧"]
+    OR1 --&gt; AND2
+    z --&gt; AND3["∧"]
+    AND2 --&gt; AND3
+    AND1 --&gt; OR2["∨"]
+    AND3 --&gt; OR2
+    OR2 --&gt; Z["Z (output)"]</code></pre>
+<div class="arithmatex">\[
+\begin{aligned}
+g_4 &amp;= x \wedge y, &amp; g_5 &amp;= x \vee y,\\
+g_6 &amp;= \lnot g_4, &amp; g_7 &amp;= g_6 \wedge g_5,\\
+g_8 &amp;= z \wedge g_7, &amp; g_9 &amp;= g_4 \vee g_8.
+\end{aligned}
+\]</div>
+<p>Con <span class="arithmatex">\(n=3\)</span> variables input y <span class="arithmatex">\(t=9\)</span>, el tamaño es <span class="arithmatex">\(t-n=6\)</span> y la profundidad es <span class="arithmatex">\(5\)</span> (camino <span class="arithmatex">\(x \to g_4 \to g_6 \to g_7 \to g_8 \to g_9\)</span>).</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 5 — Fórmula</p>
+<p>Una <strong>fórmula</strong> es un circuito en el cual todos los nodos tienen fan-out (outdegree) a lo más <span class="arithmatex">\(1\)</span>.</p>
+</div>
+<div class="admonition observation">
+<p class="admonition-title">Observación</p>
+<p>El grafo de una fórmula es un <strong>árbol</strong>. La diferencia crucial entre una fórmula y un circuito es que en el circuito un resultado puede ser usado múltiples veces sin necesidad de recomputarlo.</p>
+</div>
+<h2 id="circuitos-de-morgan">Circuitos De Morgan<a class="headerlink" href="#circuitos-de-morgan" title="Permanent link">&para;</a></h2>
+<div class="admonition def">
+<p class="admonition-title">Def 6 — Circuito De Morgan</p>
+<p>Un <strong>circuito De Morgan</strong> es un circuito sobre la base <span class="arithmatex">\(\{\wedge, \vee\}\)</span> donde los inputs pueden ser las variables y sus negaciones.</p>
+</div>
+<div class="admonition observation">
+<p class="admonition-title">Observación</p>
+<p>Usando las leyes de De Morgan</p>
+<div class="arithmatex">\[
+\lnot(x \vee y) = \lnot x \wedge \lnot y, \qquad \lnot(x \wedge y) = \lnot x \vee \lnot y,
+\]</div>
+<p>se puede mostrar que cualquier circuito sobre <span class="arithmatex">\(\{\wedge, \vee, \lnot\}\)</span> puede ser reducido a la forma De Morgan, a lo más doblando el número de nodos (la profundidad se mantiene).</p>
+</div>
+<h2 id="circuitos-probabilisticos">Circuitos probabilísticos<a class="headerlink" href="#circuitos-probabilisticos" title="Permanent link">&para;</a></h2>
+<div class="admonition def">
+<p class="admonition-title">Def 7 — Circuito probabilístico</p>
+<p>Un circuito se dice <strong>probabilístico</strong> si, además de tener las variables input estándar <span class="arithmatex">\(x_1, \dots, x_n\)</span>, tiene algunos inputs <span class="arithmatex">\(r_1, \dots, r_m\)</span> llamados <strong>inputs aleatorios</strong>. Cuando estos inputs aleatorios son escogidos de una distribución uniforme en <span class="arithmatex">\(\{0,1\}\)</span>, el output <span class="arithmatex">\(C(x)\)</span> del circuito es una variable <span class="arithmatex">\(0\)</span>-<span class="arithmatex">\(1\)</span> aleatoria.</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 8 — Computar (probabilístico)</p>
+<p>Un circuito probabilístico <span class="arithmatex">\(C(x)\)</span> <strong>computa</strong> una función booleana <span class="arithmatex">\(f(x)\)</span> si</p>
+<div class="arithmatex">\[
+\text{Prob}[C(x) = f(x)] \geq 3/4, \qquad \forall x \in \{0,1\}^n.
+\]</div>
+</div>
+<div class="admonition observation">
+<p class="admonition-title">Observación</p>
+<p>Podemos usar <span class="arithmatex">\(3/4\)</span> o cualquier probabilidad <span class="arithmatex">\(&gt; 1/2\)</span>.</p>
+</div>
+<div class="admonition motivation">
+<p class="admonition-title">Pregunta</p>
+<p>¿Pueden los circuitos probabilísticos computar una función usando un tamaño mucho menor que un circuito determinístico?</p>
+</div>
+<div class="admonition prop">
+<p class="admonition-title">Lema (Majority trick)</p>
+<p>Si <span class="arithmatex">\(x_1, \dots, x_m\)</span> son variables aleatorias Bernoulli independientes con probabilidad de éxito <span class="arithmatex">\(1/2 + \varepsilon\)</span>, entonces</p>
+<div class="arithmatex">\[
+\text{Prob}[Maj(x_1, \dots, x_m) = 0] \leq e^{-2\varepsilon^2 m}.
+\]</div>
+</div>
+<div class="admonition proof">
+<p class="admonition-title">Demostración</p>
+<p>Sea <span class="arithmatex">\(\mathcal{F}\)</span> la colección de subconjuntos de <span class="arithmatex">\([m]\)</span> de tamaño <span class="arithmatex">\(&gt; m/2\)</span>. Entonces</p>
+<div class="arithmatex">\[
+\text{Prob}[Maj(x_1,\dots,x_m)=0] = \sum_{S \in \mathcal{F}} \text{Prob}[x_i = 0,\ \forall i \in S] \cdot \text{Prob}[x_i = 1,\ \forall i \notin S]
+\]</div>
+<div class="arithmatex">\[
+= \sum_{S \in \mathcal{F}} (1/2-\varepsilon)^{|S|}(1/2+\varepsilon)^{m-|S|} \leq \sum_{S \in \mathcal{F}} (1/2-\varepsilon)^{m/2}(1/2+\varepsilon)^{m/2} = \sum_{S \in \mathcal{F}} (1/4-\varepsilon^2)^{m/2},
+\]</div>
+<p>usando que <span class="arithmatex">\((1/2-\varepsilon) &lt; (1/2+\varepsilon)\)</span> y <span class="arithmatex">\(|S| &gt; m/2\)</span>. Como <span class="arithmatex">\(|\mathcal{F}| \leq 2^m\)</span> (total de subconjuntos de <span class="arithmatex">\([m]\)</span>),</p>
+<div class="arithmatex">\[
+\leq 2^m \cdot (1/4-\varepsilon^2)^{m/2} = 2^{m/2}\, 2^{m/2}\, (1/4-\varepsilon^2)^{m/2} = (1-4\varepsilon^2)^{m/2} \leq e^{-2\varepsilon^2 m}. \qquad \blacksquare
+\]</div>
+</div>
+<h2 id="teorema-de-adleman">Teorema de Adleman<a class="headerlink" href="#teorema-de-adleman" title="Permanent link">&para;</a></h2>
+<div class="admonition prop">
+<p class="admonition-title">Teorema (Adleman, 1978)</p>
+<p>Si una función booleana <span class="arithmatex">\(f\)</span> de <span class="arithmatex">\(n\)</span> variables puede ser computada por un circuito probabilístico de tamaño <span class="arithmatex">\(M\)</span>, entonces <span class="arithmatex">\(f\)</span> puede ser computada por un circuito determinístico de tamaño a lo más <span class="arithmatex">\(8 \cdot n \cdot M\)</span>.</p>
+</div>
+<div class="admonition author">
+<p class="admonition-title">Leonard Adleman</p>
+<p>Leonard Adleman (n. 1945), informático y bioquímico estadounidense —también la "A" de RSA— demostró este resultado de derandomización de circuitos en 1978.</p>
+</div>
+<div class="admonition proof">
+<p class="admonition-title">Demostración</p>
+<p>Sea <span class="arithmatex">\(C\)</span> un circuito probabilístico que computa <span class="arithmatex">\(f\)</span>, es decir <span class="arithmatex">\(\text{Prob}[C(x)=f(x)] \geq 3/4\)</span>, <span class="arithmatex">\(\forall x \in \{0,1\}^n\)</span>.</p>
+<p>Tomamos <span class="arithmatex">\(m\)</span> copias independientes de <span class="arithmatex">\(C\)</span>: <span class="arithmatex">\(C_1, \dots, C_m\)</span>. Consideramos el circuito probabilístico <span class="arithmatex">\(C'\)</span> que computa la función <em>Majority</em> de los outputs de los <span class="arithmatex">\(m\)</span> circuitos <span class="arithmatex">\(C_1, \dots, C_m\)</span>.</p>
+<p>Fijemos <span class="arithmatex">\(a \in \{0,1\}^n\)</span> y definamos, para cada <span class="arithmatex">\(i\)</span>, la variable indicatriz <span class="arithmatex">\(x_i := \mathbb{1}[C_i(a) = f(a)]\)</span>. Cada <span class="arithmatex">\(x_i\)</span> satisface <span class="arithmatex">\(\text{Prob}[x_i=1] = 1/2+\varepsilon\)</span> con <span class="arithmatex">\(\varepsilon = 1/4\)</span>. Por el lema del Majority trick,</p>
+<div class="arithmatex">\[
+\text{Prob}[Maj(x_1,\dots,x_m)=0] \leq e^{-2\varepsilon^2 m}.
+\]</div>
+<p>En otras palabras, <span class="arithmatex">\(C'\)</span> se equivoca en el input <span class="arithmatex">\(a \in \{0,1\}^n\)</span> con probabilidad a lo más <span class="arithmatex">\(e^{-2\varepsilon^2 m} = e^{-m/8}\)</span>.</p>
+<p>Por <em>union bound</em>, la probabilidad de que <span class="arithmatex">\(C'\)</span> se equivoque en <strong>algún</strong> input de <span class="arithmatex">\(\{0,1\}^n\)</span> es</p>
+<div class="arithmatex">\[
+\text{Prob}\Big[\bigcup_{a \in \{0,1\}^n} B_a\Big] \leq \sum_{a \in \{0,1\}^n} e^{-m/8} = 2^n \cdot e^{-m/8}, \qquad B_a := \{C' \text{ se equivoca en } a\}.
+\]</div>
+<p>Tomando <span class="arithmatex">\(m = 8n\)</span> se tiene <span class="arithmatex">\(2^n \cdot e^{-m/8} &lt; 1\)</span>, luego</p>
+<div class="arithmatex">\[
+\text{Prob}[C' \text{ es correcto } \forall w \in \{0,1\}^n] &gt; 0.
+\]</div>
+<p>Por lo tanto existe un set de inputs aleatorios que hace que <span class="arithmatex">\(C'\)</span> dé respuestas correctas en todos los inputs de <span class="arithmatex">\(\{0,1\}^n\)</span>; fijando esos inputs, <span class="arithmatex">\(C'\)</span> se vuelve un circuito <strong>determinístico</strong>, de tamaño a lo más <span class="arithmatex">\(8nM\)</span>. <span class="arithmatex">\(\blacksquare\)</span></p>
+</div>
+<h2 id="tiempo-promedio-de-computacion">Tiempo promedio de computación<a class="headerlink" href="#tiempo-promedio-de-computacion" title="Permanent link">&para;</a></h2>
+<div class="admonition def">
+<p class="admonition-title">Def 9 — Nodo de parada y tiempo de computación</p>
+<p>Sea <span class="arithmatex">\(C = (g_1, \dots, g_s)\)</span> un circuito computando una función booleana <span class="arithmatex">\(f(x)\)</span>, es decir <span class="arithmatex">\(g_s(x) = f(x)\)</span>. Introducimos una variable booleana <span class="arithmatex">\(Z\)</span> (la <em>variable output</em>), que es un resultado parcial en el circuito, <span class="arithmatex">\(Z = g_i(a)\)</span>. El objetivo es interrumpir la secuencia de cómputo <span class="arithmatex">\(g_1(a), \dots, g_s(a)\)</span> apenas <span class="arithmatex">\(Z\)</span> tenga el valor correcto <span class="arithmatex">\(f(a)\)</span>.</p>
+<p>Para esto declaramos algunos nodos como <strong>nodos de parada</strong>. Dado <span class="arithmatex">\(a \in \{0,1\}^n\)</span>, una computación <span class="arithmatex">\(g_1(a), \dots, g_s(a)\)</span> continúa hasta que el primer nodo <span class="arithmatex">\(g_i\)</span> que es nodo de parada cumple <span class="arithmatex">\(g_i(a) = 1\)</span>; ahí la computación en <span class="arithmatex">\(a\)</span> termina y el output <span class="arithmatex">\(C(a)\)</span> es el valor actual de <span class="arithmatex">\(Z\)</span>.</p>
+<p>El <strong>tiempo de computación</strong> <span class="arithmatex">\(t_C(a)\)</span> de un circuito en el input <span class="arithmatex">\(a\)</span> es el número <span class="arithmatex">\(i\)</span> de nodos evaluados hasta que el valor es computado. El <strong>tiempo promedio</strong> de un circuito <span class="arithmatex">\(C\)</span> es</p>
+<div class="arithmatex">\[
+t(C) = 2^{-n} \sum_{a \in \{0,1\}^n} t_C(a).
+\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo — Tres circuitos para <span class="arithmatex">\(OR_4\)</span></p>
+<p>Tres circuitos que computan <span class="arithmatex">\(OR_4(x) = x_1 \vee x_2 \vee x_3 \vee x_4\)</span>.</p>
+<p><strong>Circuito <span class="arithmatex">\(C_1\)</span></strong> (evalúa cada variable en orden, deteniéndose ante el primer <span class="arithmatex">\(1\)</span>):</p>
+<div class="arithmatex">\[
+g_1=x_1 \ (\text{stop}),\quad g_2=x_2\ (\text{stop}),\quad g_3=x_3\ (\text{stop}),\quad g_4=x_4\ (\text{stop}),
+\]</div>
+<p>con <span class="arithmatex">\(Z=1\)</span> si algún nodo de parada da <span class="arithmatex">\(1\)</span>, y <span class="arithmatex">\(Z=0\)</span> en otro caso.</p>
+<p><strong>Circuito <span class="arithmatex">\(C_2\)</span>:</strong></p>
+<div class="arithmatex">\[
+g_1 = x_1 \vee x_2 \ (\text{stop}), \qquad g_2 = x_3 \vee x_4.
+\]</div>
+<p><strong>Circuito <span class="arithmatex">\(C_3\)</span></strong> (fórmula, sin parada anticipada):</p>
+<div class="arithmatex">\[
+g_1 = x_1 \vee x_2, \qquad g_2 = x_3 \vee x_4, \qquad g_3 = g_1 \vee g_2.
+\]</div>
+<p>Sobre <span class="arithmatex">\(a=(0,1,0,0)\)</span>: el circuito <span class="arithmatex">\(C_1\)</span> toma <span class="arithmatex">\(t_{C_1}(a)=3\)</span>, el <span class="arithmatex">\(C_2\)</span> toma <span class="arithmatex">\(t_{C_2}(a)=1\)</span> y el <span class="arithmatex">\(C_3\)</span> toma <span class="arithmatex">\(t_{C_3}(a)=3\)</span>.</p>
+<p>El tiempo promedio del circuito <span class="arithmatex">\(C_3\)</span> es siempre <span class="arithmatex">\(t(C_3)=3\)</span> (nunca hay parada anticipada). En cambio, para <span class="arithmatex">\(C_2\)</span>:</p>
+<div class="arithmatex">\[
+t(C_2) = \frac{1}{16}\big(12 \cdot 1 + 4 \cdot 2\big) = \frac{5}{4},
+\]</div>
+<p>ya que <span class="arithmatex">\(g_1 = x_1 \vee x_2 = 1\)</span> en <span class="arithmatex">\(12\)</span> de los <span class="arithmatex">\(16\)</span> inputs (parada en <span class="arithmatex">\(1\)</span> paso), y en los <span class="arithmatex">\(4\)</span> restantes se necesita evaluar también <span class="arithmatex">\(g_2\)</span> (parada en <span class="arithmatex">\(2\)</span> pasos).</p>
+</div>
+<div class="admonition def">
+<p class="admonition-title">Def 10 — Tiempo promedio de una función</p>
+<p>El <strong>tiempo promedio</strong> de una función booleana <span class="arithmatex">\(t(f)\)</span> es el tiempo promedio mínimo de un circuito que computa <span class="arithmatex">\(f\)</span>.</p>
+</div>
+<div class="admonition observation">
+<p class="admonition-title">Observación</p>
+<p>Siempre se tiene <span class="arithmatex">\(t(f) \leq C(f)\)</span>, donde <span class="arithmatex">\(C(f)\)</span> es el tamaño mínimo de un circuito que computa <span class="arithmatex">\(f\)</span>.</p>
+</div>
+<div class="admonition author">
+<p class="admonition-title">Chashkin (1997)</p>
+<p>A. V. Chashkin demostró que existen funciones booleanas <span class="arithmatex">\(f\)</span> de <span class="arithmatex">\(n\)</span> variables que requieren <span class="arithmatex">\(t(f) = \Omega(2^n/n)\)</span>.</p>
+</div>
+<h2 id="ejemplo-la-funcion-umbral-th_2n">Ejemplo: la función umbral <span class="arithmatex">\(Th_2^n\)</span><a class="headerlink" href="#ejemplo-la-funcion-umbral-th_2n" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title"><span class="arithmatex">\(C(Th_2^n) \geq n-1\)</span> pero <span class="arithmatex">\(t(Th_2^n) = O(1)\)</span></p>
+<p>Toda función booleana que depende de sus <span class="arithmatex">\(n\)</span> variables requiere al menos <span class="arithmatex">\(n-1\)</span> gates, luego <span class="arithmatex">\(C(Th_2^n(x)) \geq n-1\)</span>.</p>
+<p>Por otro lado, se puede probar que <span class="arithmatex">\(t(Th_2^n(x)) = O(1)\)</span>. Particionamos las variables en bloques de <span class="arithmatex">\(3\)</span>: <span class="arithmatex">\(\{x_1,x_2,x_3\}, \{x_4,x_5,x_6\}, \dots\)</span> Cada bloque <span class="arithmatex">\(Th_2^3\)</span> puede computarse con <span class="arithmatex">\(6\)</span> gates (en tiempo <span class="arithmatex">\(6\)</span>):</p>
+<div class="arithmatex">\[
+Z = Th_2^3(x_1,x_2,x_3), \quad Z = Th_2^3(x_4,x_5,x_6), \quad \dots
+\]</div>
+<p>Primero computamos <span class="arithmatex">\(Z=Th_2^3(x_1,x_2,x_3)\)</span>, luego <span class="arithmatex">\(Z=Th_2^3(x_4,x_5,x_6)\)</span>, y así sucesivamente; cada nodo que resetea <span class="arithmatex">\(Z\)</span> es un nodo de parada.</p>
+<p>De esta forma, las computaciones sobre <span class="arithmatex">\(4 \cdot 2^{n-3} = 2^{n-1}\)</span> inputs se detienen en <span class="arithmatex">\(6\)</span> pasos (el primer bloque ya satisface el umbral). Las computaciones sobre <span class="arithmatex">\(4^2 \cdot 2^{n-6} = 2^{n-2}\)</span> inputs restantes se detienen en <span class="arithmatex">\(6 \cdot 2 = 12\)</span> pasos, y en general las computaciones sobre <span class="arithmatex">\(4^t \cdot 2^{n-3t} = 2^{n-t}\)</span> inputs se detienen después de <span class="arithmatex">\(6t\)</span> pasos.</p>
+<p>Por lo tanto, el tiempo de computación promedio es a lo más</p>
+<div class="arithmatex">\[
+\sum_{t=1}^{n/3} 6t \cdot 2^{-t} = O(1).
+\]</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../fun_boole/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Funciones Booleanas">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Funciones Booleanas
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../standalone/calendario/" class="md-footer__link md-footer__link--next" aria-label="Next: Calendario">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Calendario
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

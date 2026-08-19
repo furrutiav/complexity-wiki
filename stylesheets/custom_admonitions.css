@@ -1,0 +1,236 @@
+/* ============================
+   Base
+   ============================ */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0.08rem;
+  border-left-width: 0.22rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.35rem rgba(15, 23, 42, 0.04);
+  margin: 1.15rem 0;
+  overflow: hidden;
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.md-typeset .admonition > .admonition-title + *,
+.md-typeset details > summary + * {
+  margin-top: 0.85rem;
+}
+
+/* ============================
+   Definiciones
+   ============================ */
+
+:root {
+  --md-admonition-icon--def: var(--md-admonition-icon--note);
+}
+
+.md-typeset .admonition.def,
+.md-typeset details.def {
+  border-color: rgba(242, 201, 76, 0.08);
+}
+
+.md-typeset .def > .admonition-title,
+.md-typeset .def > summary {
+  background-color: rgba(242, 201, 76, 0.18);
+}
+
+.md-typeset .def > .admonition-title::before,
+.md-typeset .def > summary::before {
+  background-color: #f2c94c;
+  -webkit-mask-image: var(--md-admonition-icon--def);
+          mask-image: var(--md-admonition-icon--def);
+}
+
+/* ============================
+   Proofs (Demostraciones) Use same color scheme as Theorems
+   ============================ */
+.md-typeset .admonition.proof,
+.md-typeset details.proof {
+  border-color: rgba(52, 152, 219, 0.15);
+} 
+
+.md-typeset .proof > .admonition-title,
+.md-typeset .proof > summary {
+  background-color: rgba(52, 152, 219, 0.20);
+}
+
+.md-typeset .proof > .admonition-title::before,
+.md-typeset .proof > summary::before {
+  background-color: #3498db;
+  -webkit-mask-image: var(--md-admonition-icon--success);
+          mask-image: var(--md-admonition-icon--success);
+}
+
+/* ============================
+   Propositions
+   ============================ */
+
+.md-typeset .admonition.prop,
+.md-typeset details.prop {
+  border-color: rgba(52, 152, 219, 0.15);
+}
+
+.md-typeset .prop > .admonition-title,
+.md-typeset .prop > summary {
+  background-color: rgba(52, 152, 219, 0.20);
+}   
+
+.md-typeset .prop > .admonition-title::before,
+.md-typeset .prop > summary::before {
+  background-color: #3498db;
+  -webkit-mask-image: var(--md-admonition-icon--abstract);
+          mask-image: var(--md-admonition-icon--abstract);
+}
+
+/* ============================
+   Observaciones
+   ============================ */
+
+:root {
+  --md-admonition-icon--observation: var(--md-admonition-icon--quote);
+}
+
+.md-typeset .admonition.observation,
+.md-typeset details.observation {
+  border-color: rgba(111, 66, 193, 0.18);
+}
+
+.md-typeset .observation > .admonition-title,
+.md-typeset .observation > summary {
+  background-color: rgba(111, 66, 193, 0.14);
+}
+
+.md-typeset .observation > .admonition-title::before,
+.md-typeset .observation > summary::before {
+  background-color: #6f42c1;
+  -webkit-mask-image: var(--md-admonition-icon--observation);
+          mask-image: var(--md-admonition-icon--observation);
+}
+
+/* ============================
+   Ejercicios (Use teal color scheme)
+   ============================ */
+
+:root {
+    --md-admonition-icon--exercise: var(--md-admonition-icon--question);
+}
+
+.md-typeset .admonition.ex,
+.md-typeset details.ex {
+    border-color: rgba(46, 204, 113, 0.15); 
+}
+
+.md-typeset .ex > .admonition-title,
+.md-typeset .ex > summary {
+    background-color: rgba(46, 204, 113, 0.20); 
+} 
+
+.md-typeset .ex > .admonition-title::before,
+.md-typeset .ex > summary::before {
+    background-color: teal;
+    -webkit-mask-image: var(--md-admonition-icon--exercise); 
+            mask-image: var(--md-admonition-icon--exercise); 
+}
+
+/* ============================
+   Ejemplos (Use orange color scheme)
+   ============================ */
+
+:root {
+    --md-admonition-icon--example: var(--md-admonition-icon--info);
+}
+
+.md-typeset .admonition.example,
+.md-typeset details.example {
+    border-color: rgba(243, 156, 18, 0.15); 
+}
+
+.md-typeset .example > .admonition-title,
+.md-typeset .example > summary {
+    background-color: rgba(243, 156, 18, 0.20); 
+}
+
+.md-typeset .example > .admonition-title::before,
+.md-typeset .example > summary::before {
+    background-color: orange;
+    -webkit-mask-image: var(--md-admonition-icon--example);
+            mask-image: var(--md-admonition-icon--example);
+}
+
+/* ============================
+   Motivación (reuses the "tip" lightbulb icon)
+   ============================ */
+
+.md-typeset .admonition.motivation,
+.md-typeset details.motivation {
+    border-color: rgba(231, 76, 60, 0.15);
+}
+
+.md-typeset .motivation > .admonition-title,
+.md-typeset .motivation > summary {
+    background-color: rgba(231, 76, 60, 0.18);
+}
+
+.md-typeset .motivation > .admonition-title::before,
+.md-typeset .motivation > summary::before {
+    background-color: #e74c3c;
+    -webkit-mask-image: var(--md-admonition-icon--tip);
+            mask-image: var(--md-admonition-icon--tip);
+}
+
+/* ============================
+   Autores
+   ============================ */
+
+:root {
+    --md-admonition-icon--author: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/></svg>');
+}
+
+.md-typeset .admonition.author,
+.md-typeset details.author {
+    border-color: rgba(233, 30, 99, 0.15);
+}
+
+.md-typeset .author > .admonition-title,
+.md-typeset .author > summary {
+    background-color: rgba(233, 30, 99, 0.16);
+}
+
+.md-typeset .author > .admonition-title::before,
+.md-typeset .author > summary::before {
+    background-color: #e91e63;
+    -webkit-mask-image: var(--md-admonition-icon--author);
+            mask-image: var(--md-admonition-icon--author);
+}
+
+/* ============================
+   Referencias
+   ============================ */
+
+:root {
+    --md-admonition-icon--ref: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5A2,2 0 0,0 17,3Z"/></svg>');
+}
+
+.md-typeset .admonition.ref,
+.md-typeset details.ref {
+    border-color: rgba(96, 125, 139, 0.18);
+}
+
+.md-typeset .ref > .admonition-title,
+.md-typeset .ref > summary {
+    background-color: rgba(96, 125, 139, 0.16);
+}
+
+.md-typeset .ref > .admonition-title::before,
+.md-typeset .ref > summary::before {
+    background-color: #607d8b;
+    -webkit-mask-image: var(--md-admonition-icon--ref);
+            mask-image: var(--md-admonition-icon--ref);
+}
