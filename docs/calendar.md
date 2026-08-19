@@ -2,7 +2,7 @@
 
 ## Contenidos por semana
 
-| Semana | Fecha | Actividades cátedra <br>(Lunes y Viernes 12:00hrs) | Actividades auxiliar <br>(Viernes 16:15hrs) |
+| Semana | Fecha | Actividades | Actividades |
 |:---:|:---:|---|---|
 | 1 | 01/07 - 28/07 | **Martes-Jueves**: <br> |  |
 | 2 | 01/07 - 28/07 | **Martes-Jueves**: <br> |  |
